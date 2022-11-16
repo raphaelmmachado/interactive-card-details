@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { CardsSection } from "./components/cards/CardsSection";
 import { FormSection } from "./components/form/FormSection";
 function App() {
@@ -7,16 +7,7 @@ function App() {
   const [expMonth, setExpMonth] = useState("00");
   const [expYear, setExpYear] = useState("00");
   const [cvc, setCvc] = useState("123");
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("cardInfoData"));
-    if (data) {
-      setName(data.name);
-      setNumber(data.number);
-      setExpMonth(data.month);
-      setExpYear(data.year);
-      setCvc(data.cvc);
-    }
-  }, []);
+
   return (
     <main id="App" className="flex flex-col md:flex-row min-h-screen">
       <CardsSection
