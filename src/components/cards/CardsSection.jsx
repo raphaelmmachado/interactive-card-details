@@ -4,15 +4,14 @@ function CardsSection({ name, number, expMonth, expYear, cvc }) {
   return (
     <section
       id="cards-section"
-      className="relative min-h-[40vh] flex justify-center items-center"
+      className="relative min-h-[40vh] md:w-[30vw]  flex justify-center items-center"
     >
-      <BackFaceCard secret="123" />
+      <BackFaceCard cvc={cvc} />
       <FrontFaceCard
         name={name}
         number={number}
         expMonth={expMonth}
         expYear={expYear}
-        cvc={cvc}
       />
     </section>
   );

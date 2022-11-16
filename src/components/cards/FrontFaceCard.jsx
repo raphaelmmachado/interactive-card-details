@@ -3,8 +3,8 @@ function FrontFaceCard({ name, number, expMonth, expYear }) {
   return (
     <div
       id="frontface-card"
-      className="top-[115px] 
-      absolute card rounded-lg text-white shadow-md shadow-violete-400"
+      className="top-[115px] md:top-[120px] md:right-[-10vw]
+      absolute card rounded-lg text-white shadow-md shadow-violete-900"
     >
       <div className="my-3 ml-4">
         <CardLogo />
@@ -37,8 +37,8 @@ function FrontFaceCard({ name, number, expMonth, expYear }) {
             {number[15]}
           </div>
         </div>
-        <div className="flex flex-row justify-between w-full text-sm tracking-wider">
-          <h1>{name.toUpperCase()}</h1>
+        <div className="flex flex-row justify-between w-full">
+          <h1 className="text-sm tracking-wide">{name.toUpperCase()}</h1>
           <div>
             {expMonth}
             {expMonth.length > 0 && expYear.length > 0 && "/"}
