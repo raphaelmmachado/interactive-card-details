@@ -4,14 +4,16 @@ function FrontFaceCard({ name, number, expMonth, expYear }) {
     <div
       id="frontface-card"
       className="top-[115px] md:top-[120px] md:right-[-10vw]
+      lg:top-[50px]
+      flex flex-col justify-between
       absolute card rounded-lg text-white shadow-md shadow-violete-900"
     >
-      <div className="my-3 ml-4">
+      <div className="pt-3 ml-4">
         <CardLogo />
       </div>
 
       <div className="flex flex-col justify-around p-4 mt-2 gap-2">
-        <div className="flex flex-row gap-4 text-lg justify-start">
+        <div className="flex flex-row gap-4 text-lg justify-start lg:text-xl">
           <div>
             {number[0]}
             {number[1]}
@@ -38,7 +40,9 @@ function FrontFaceCard({ name, number, expMonth, expYear }) {
           </div>
         </div>
         <div className="flex flex-row justify-between w-full">
-          <h1 className="text-sm tracking-wide">{name.toUpperCase()}</h1>
+          <h1 className="text-sm lg:text-base tracking-wide">
+            {name.toUpperCase()}
+          </h1>
           <div>
             {expMonth}
             {expMonth.length > 0 && expYear.length > 0 && "/"}
