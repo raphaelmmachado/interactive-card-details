@@ -3,10 +3,9 @@ function FrontFaceCard({ name, number, expMonth, expYear }) {
   return (
     <div
       id="frontface-card"
-      className="top-[115px] md:top-[120px] md:right-[-10vw]
-      lg:top-[50px]
-      flex flex-col justify-between
-      absolute card rounded-lg text-white shadow-md shadow-violete-900"
+      className="card absolute top-[60%] right-[2vw]
+      md:static md:mr-[4vw] md:flex flex-col justify-between
+      rounded-lg text-white shadow-md shadow-violete-900"
     >
       <div className="pt-3 ml-4">
         <CardLogo />

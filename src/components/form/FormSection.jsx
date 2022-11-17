@@ -153,7 +153,7 @@ function FormSection(props) {
   return (
     <section
       id="form-section"
-      className="flex items-center md:flex-grow justify-center mt-20 md:mt-0"
+      className="flex items-center md:flex-grow justify-center mt-20 md:mt-0 md:ml-12"
     >
       <>
         {!success ? (
@@ -211,7 +211,7 @@ function FormSection(props) {
               </p>
             ) : null}
             <br />
-            <label htmlFor="date" className=" font-semibold  text-violete-900">
+            <label className=" font-semibold  text-violete-900">
               EXP. DATE (MM/YY) CVC
             </label>
             <div className="flex flex-row gap-4 justify-center items-center ">
@@ -228,8 +228,8 @@ function FormSection(props) {
                 name="date"
                 id="month"
                 maxLength="2"
-                min="01"
-                max="12"
+                min={1}
+                max={12}
                 required={true}
               />
 
@@ -246,8 +246,8 @@ function FormSection(props) {
                 name="date"
                 id="year"
                 maxLength={2}
-                min="22"
-                max="99"
+                min={22}
+                max={99}
                 required={true}
               />
 

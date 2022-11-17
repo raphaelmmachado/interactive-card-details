@@ -4,15 +4,24 @@ function CardsSection({ name, number, expMonth, expYear, cvc }) {
   return (
     <section
       id="cards-section"
-      className="relative min-h-[40vh] md:w-[30vw]  flex justify-center items-center"
+      className="relative min-h-[200px] max-h-[20vh]
+      md:min-h-screen
+      md:w-[30vw] md:max-w-[350px] flex justify-center items-center"
     >
-      <BackFaceCard cvc={cvc} />
-      <FrontFaceCard
-        name={name}
-        number={number}
-        expMonth={expMonth}
-        expYear={expYear}
-      />
+      <div
+        className="relative md:absolute
+      left-[3vw] md:left-[20%] lg:left-[50%]
+      md:flex flex-col-reverse items-center
+      gap-8 justify-between"
+      >
+        <BackFaceCard cvc={cvc} />
+        <FrontFaceCard
+          name={name}
+          number={number}
+          expMonth={expMonth}
+          expYear={expYear}
+        />
+      </div>
     </section>
   );
 }
