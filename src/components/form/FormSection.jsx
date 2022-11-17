@@ -18,7 +18,7 @@ function FormSection(props) {
     const value = nameRef.current.value;
 
     if (value.length >= 26) return;
-    if (containsOnlyLetters(value) === false && value.length > 0) {
+    if ((containsOnlyLetters(value) === false && value.length > 0) || !value) {
       setNameAlert(true);
       return;
     } else {
@@ -36,14 +36,16 @@ function FormSection(props) {
   };
 
   const handleCardNumber = () => {
-    const value = numberRef.current.value.split(" ").join("");
+    let value = numberRef.current.value.split(" ").join("");
+    console.log(value);
     if (value.length > 16 && containsOnlyNumbers(value)) {
       const slicedValue = value.slice(0, 16);
       props.setNumber(slicedValue);
       setNumberAlert(false);
+      numberRef.current.value.slice(0, 16);
       return;
     }
-    if (containsOnlyNumbers(value) === false && value.length > 0) {
+    if ((containsOnlyNumbers(value) === false && value.length > 0) || !value) {
       setNumberAlert(true);
       return;
     } else {
@@ -56,6 +58,7 @@ function FormSection(props) {
     const value = monthRef.current.value;
     if (
       (value.length > 0 && containsOnlyNumbers(value) === false) ||
+      !value ||
       parseInt(value) > 12
     ) {
       setMonthAlert(true);
@@ -68,7 +71,7 @@ function FormSection(props) {
 
   const handleCardExpYear = () => {
     const value = yearRef.current.value;
-    if (value.length > 0 && containsOnlyNumbers(value) === false) {
+    if ((value.length > 0 && containsOnlyNumbers(value) === false) || !value) {
       setYearAlert(true);
       return;
     } else {
@@ -80,7 +83,8 @@ function FormSection(props) {
     const value = cvcRef.current.value;
     if (
       value.length > 3 ||
-      (value.length > 0 && containsOnlyNumbers(value) === false)
+      (value.length > 0 && containsOnlyNumbers(value) === false) ||
+      !value
     ) {
       setCvcAlert(true);
       return;
@@ -198,7 +202,7 @@ function FormSection(props) {
               placeholder="e.g. 1234 5678 9123 0000"
               name="number"
               id="number"
-              maxLength={16}
+              maxLength={19}
               required={true}
             />
             {numberAlert ? (
