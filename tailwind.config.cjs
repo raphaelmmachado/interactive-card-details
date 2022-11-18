@@ -14,6 +14,7 @@ module.exports = {
 
       lg: "1024px",
       // => @media (min-width: 1024px) { ... }
+      vlg: "1124px",
 
       xl: "1280px",
       // => @media (min-width: 1280px) { ... }
@@ -28,6 +29,10 @@ module.exports = {
         100: "hsl(270, 3%, 87%)",
         400: "hsl(279, 6%, 55%)",
         900: "hsl(278, 68%, 11%)",
+      },
+      inpt_border: {
+        from: "hsl(249, 99%, 64%)",
+        to: "hsl(278, 94%, 30%)",
       },
     },
     extend: {},
