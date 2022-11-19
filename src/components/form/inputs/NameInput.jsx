@@ -5,8 +5,6 @@ function NameInput({ setName, nameAlert, setNameAlert }) {
 
   const handleCardName = (e) => {
     const value = nameRef.current.value;
-    console.log(value);
-
     if (!value) setName("Jane Appleseed");
     //if user typed non-letter, trigger alert
     if ((containsOnlyLetters(value) === false && value.length > 0) || !value) {

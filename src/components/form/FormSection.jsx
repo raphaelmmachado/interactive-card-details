@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NameInput } from "./inputs/NameInput";
 import { NumberInput } from "./inputs/NumberInput";
 import { MonthInput } from "./inputs/MonthInput";
-import { YearInput } from "./inputs/yearInput";
+import { YearInput } from "./inputs/YearInput";
 import { VerificationCode } from "./inputs/VerificationCode";
 import completeLogo from "../../assets/images/icon-complete.svg";
 
@@ -14,14 +14,31 @@ function FormSection(props) {
   const [cvcAlert, setCvcAlert] = useState(false);
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [doNotSubmit, setDoNotSubmit] = useState(false);
 
-  const handleSubmit = () => {
-    setLoading(true);
-    setSuccess(true);
-    setTimeout(() => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(doNotSubmit);
+    if (
+      doNotSubmit ||
+      nameAlert ||
+      numberAlert ||
+      monthAlert ||
+      yearAlert ||
+      cvcAlert
+    ) {
       setSuccess(false);
       setLoading(false);
-    }, 1000);
+      event.preventDefault();
+      return;
+    } else {
+      setLoading(true);
+      setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+        setLoading(false);
+      }, 1000);
+    }
   };
 
   return (
@@ -34,6 +51,7 @@ function FormSection(props) {
       <>
         {!success ? (
           <form
+            action="?"
             onSubmit={handleSubmit}
             className="flex flex-col justify-evenly items-start p-4
            text-sm md:text-base md:min-h-[400px] min-w-[40%] max-w-fit tracking-wider"
@@ -48,6 +66,7 @@ function FormSection(props) {
               setNumber={props.setNumber}
               numberAlert={numberAlert}
               setNumberAlert={setNumberAlert}
+              setDoNotSubmit={setDoNotSubmit}
             />
             <br />
             <label className=" font-semibold  text-violete-900">
@@ -58,16 +77,19 @@ function FormSection(props) {
                 setMonth={props.setExpMonth}
                 monthAlert={monthAlert}
                 setMonthAlert={setMonthAlert}
+                setDoNotSubmit={setDoNotSubmit}
               />
               <YearInput
                 setYear={props.setExpYear}
                 yearAlert={yearAlert}
                 setYearAlert={setYearAlert}
+                setDoNotSubmit={setDoNotSubmit}
               />
               <VerificationCode
                 setCvc={props.setCvc}
                 cvcAlert={cvcAlert}
                 setCvcAlert={setCvcAlert}
+                setDoNotSubmit={setDoNotSubmit}
               />
             </div>
             {monthAlert ? (

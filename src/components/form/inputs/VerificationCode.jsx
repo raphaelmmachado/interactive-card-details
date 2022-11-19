@@ -1,21 +1,24 @@
 import { useRef } from "react";
 import { containsOnlyNumbers } from "../../../utils/formatters";
-function VerificationCode({ setCvc, cvcAlert, setCvcAlert }) {
+function VerificationCode({ setCvc, cvcAlert, setCvcAlert, setDoNotSubmit }) {
   const cvcRef = useRef(null);
 
   const handleCardCvc = () => {
-    const value = cvcRef.current.value;
+    let value = cvcRef.current.value;
+    // if input is blank card show placeholder
     if (!value) setCvc("123");
-    if (
-      value.length !== 3 ||
-      (value.length > 0 && containsOnlyNumbers(value) === false) ||
-      !value
-    ) {
+
+    if ((value.length > 0 && containsOnlyNumbers(value) === false) || !value) {
+      setDoNotSubmit(true);
       setCvcAlert(true);
-      return;
     } else {
       setCvcAlert(false);
+      setDoNotSubmit(false);
       setCvc(cvcRef.current.value);
+    }
+    //do not let user submit
+    if (value.length !== 3) {
+      setDoNotSubmit(true);
     }
   };
 

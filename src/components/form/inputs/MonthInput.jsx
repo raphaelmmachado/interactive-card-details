@@ -1,16 +1,16 @@
 import { useRef } from "react";
 
-function MonthInput({ setMonth, monthAlert, setMonthAlert }) {
+function MonthInput({ setMonth, monthAlert, setMonthAlert, setDoNotSubmit }) {
   const monthRef = useRef(null);
 
   const handleCardExpMonth = () => {
     const value = monthRef.current.value;
-    console.log(value);
     if (value) {
       setMonth(value);
       setMonthAlert(false);
     } else {
       setMonthAlert(true);
+      setDoNotSubmit(true);
     }
   };
   return (
@@ -20,6 +20,7 @@ function MonthInput({ setMonth, monthAlert, setMonthAlert }) {
         id="month"
         placeholder="MM"
         required={true}
+        onClick={handleCardExpMonth}
         onChange={handleCardExpMonth}
         ref={monthRef}
         defaultValue="00"
@@ -29,9 +30,6 @@ function MonthInput({ setMonth, monthAlert, setMonthAlert }) {
             : `border border-violete-100 outline-1 outline-violete-900`
         }`}
       >
-        <option id="disabled-option" disabled hidden>
-          MM
-        </option>
         <option value="01">01</option>
         <option value="02">02</option>
         <option value="03">03</option>

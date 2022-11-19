@@ -1,7 +1,12 @@
 import { useRef } from "react";
 import { containsOnlyNumbers } from "../../../utils/formatters";
 
-function NumberInput({ setNumber, numberAlert, setNumberAlert }) {
+function NumberInput({
+  setNumber,
+  numberAlert,
+  setNumberAlert,
+  setDoNotSubmit,
+}) {
   const numberRef = useRef(null);
 
   const handleCardNumber = () => {
@@ -9,22 +14,29 @@ function NumberInput({ setNumber, numberAlert, setNumberAlert }) {
     let value = numberRef.current.value.split(" ").join("");
     let input = numberRef.current;
     if (!value) setNumber("1234567891230000");
+
     // if user type non-number or non-space, trigger alert
     if ((containsOnlyNumbers(value) === false && value.length > 0) || !value) {
       setNumberAlert(true);
       return;
     }
-    // if value length is equal than 16
+    // if value length is equal than 16, prevent user adding more numbers
     if (value.length >= 16 && containsOnlyNumbers(value)) {
       input.maxLength = 16;
       setNumber(value);
       setNumberAlert(false);
+      setDoNotSubmit(false);
       return;
     }
     //if user typed spaces, let length be 19
     else {
       input.maxLength = 19;
       setNumber(value);
+    }
+    if (value.length < 16) {
+      setDoNotSubmit(true);
+    } else {
+      setDoNotSubmit(false);
     }
   };
   return (
