@@ -8,6 +8,7 @@ function NumberInput({ setNumber, numberAlert, setNumberAlert }) {
     // remove spaces from card number
     let value = numberRef.current.value.split(" ").join("");
     let input = numberRef.current;
+    if (!value) setNumber("1234567891230000");
     // if user type non-number or non-space, trigger alert
     if ((containsOnlyNumbers(value) === false && value.length > 0) || !value) {
       setNumberAlert(true);

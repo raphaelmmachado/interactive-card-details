@@ -5,11 +5,9 @@ function NameInput({ setName, nameAlert, setNameAlert }) {
 
   const handleCardName = (e) => {
     const value = nameRef.current.value;
+    console.log(value);
 
-    if (value.length >= 26) {
-      e.preventDefault();
-      return;
-    }
+    if (!value) setName("Jane Appleseed");
     //if user typed non-letter, trigger alert
     if ((containsOnlyLetters(value) === false && value.length > 0) || !value) {
       setNameAlert(true);
@@ -47,7 +45,7 @@ function NameInput({ setName, nameAlert, setNameAlert }) {
         placeholder="e.g. Jane Appleseed"
         name="name"
         id="name"
-        maxLength={23}
+        maxLength={24}
         required={true}
       />
       {nameAlert ? (

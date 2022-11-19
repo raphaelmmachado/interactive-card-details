@@ -5,8 +5,9 @@ function VerificationCode({ setCvc, cvcAlert, setCvcAlert }) {
 
   const handleCardCvc = () => {
     const value = cvcRef.current.value;
+    if (!value) setCvc("123");
     if (
-      value.length > 3 ||
+      value.length !== 3 ||
       (value.length > 0 && containsOnlyNumbers(value) === false) ||
       !value
     ) {
