@@ -39,9 +39,6 @@ Users should be able to:
 
 ### Built with
 
-- Semantic HTML5 markup
-- Tailwind
-- Flexbox
 - React
 - Mobile-first workflow
 - Vite
@@ -54,7 +51,7 @@ Users should be able to:
 
 ### Run Local
 
-To run the project your machine
+To run the project in your machine
 
 - npm install
 - npm run dev
