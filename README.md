@@ -32,8 +32,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://www.frontendmentor.io/solutions/interactive-card-details-with-tailwindcss-and-react-MqQ8iCFotg)
-- Live Site URL: [Add live site URL here](https://interactive-card-rm0909.netlify.app)
+- Solution URL: [Solution](https://www.frontendmentor.io/solutions/interactive-card-details-with-tailwindcss-and-react-MqQ8iCFotg)
+- Live Site URL: [Live Demo](https://interactive-card-rm0909.netlify.app)
 
 ## My process
 
